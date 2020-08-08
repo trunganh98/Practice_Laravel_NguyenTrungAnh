@@ -12,9 +12,9 @@ use Illuminate\Routing\Controller as BaseController;
 
 class TaskController extends BaseController
 {
-    public function Welcome(){
-        return view('welcome');
-    }
+//    public function Welcome(){
+//        return view('welcome');
+//    }
 
     public function addTask(Request $request){
         $task = new Task();
@@ -46,6 +46,11 @@ class TaskController extends BaseController
     public function deleteTask($id){
         Task::where('id', $id)->delete();
         return redirect('/');
+
+    }
+    public function findTask(Request $request){
+        $result = Task::where('id',$request->value)->get();
+        return view('result',['result'=>$result]);
 
     }
 

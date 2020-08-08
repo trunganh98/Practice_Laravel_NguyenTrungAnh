@@ -24,4 +24,5 @@ Route::get('delete_task/{id}','TaskController@deleteTask');
 
 Route::get('edit_task/{id}','TaskController@editTask');
 Route::post('update_task/{id}','TaskController@updateTask');
-Route::get('find_task/{id}','TaskController@deleteTask');
+Route::post('find_task','TaskController@findTask');
+

@@ -83,28 +83,9 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-                <form action="{{URL::to('find_task')}}" method="post">
-                    {{csrf_field()}}
-                    <input type="text" class="ggg" name="value" placeholder="id or name" required=""><br>
-                    <div class="clearfix"></div>
-                    <input type="submit" value="find task" name="find_task" data-target="#exampleModal">
-                </form>
-
-                <form action="{{URL::to('add_task')}}" method="post">
-                    {{csrf_field()}}
-                    <input type="text" class="ggg" name="name" placeholder="name" required=""><br>
-                    <input type="text" class="ggg" name="price" placeholder="price" required=""><br>
-                    <input type="text" class="ggg" name="desc" placeholder="desc" required=""><br>
-
-                    <div class="clearfix"></div>
-                    <input type="submit" value="add task" name="add_task" data-target="#exampleModal">
-                </form>
-
-                @if(count($tasks) > 0)
-                    <br>Current task    <br>
-
-                    <table>
-                        @foreach($tasks as $p)
+                Result
+                <table>
+                    @foreach($result as $p)
                         <tr>
                             <td>
                                 {{$p->name}}
@@ -115,22 +96,10 @@
                             <td>
                                 {{$p->desciption}}
                             </td>
-                            <td>
-                                <a href="{{URL::to('edit_task/'.$p->id)}}">
-                                    <input type="submit" value="edit value" name="edit_value">
-                                </a>
-                            </td>
-                            <td>
-                                <a onclick="return confirm('Are you sure to delete ?')" href="{{URL::to('delete_task/'.$p->id)}}">
-                                    <input type="submit" value="delete value" name="delete_value">
-                                </a>
-                            </td>
-
-
                         </tr>
-                        @endforeach
-                    </table>
-                @endif
+                    @endforeach
+                </table>
+
             </div>
         </div>
     </body>
