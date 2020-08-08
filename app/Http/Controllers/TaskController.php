@@ -28,6 +28,19 @@ class TaskController extends BaseController
         $tasks = Task::orderBy('id','desc')->get();
         return view('welcome',['tasks'=>$tasks]);
 
+    }
+    public function editTask($id){
+        $tasks = Task::orderBy('id','desc')->get();
+        return view('editTask',['tasks'=>$tasks]);
+
+    }
+    public function updateTask(Request $request, $id){
+        $data = array();
+        $data['name'] = $request->name;
+        $data['price'] = $request->price;
+        $data['description'] = $request->description;
+        Task::where('id', $id)->update($data);
+        return redirect('/');
 
     }
     public function deleteTask($id){
@@ -35,13 +48,6 @@ class TaskController extends BaseController
         return redirect('/');
 
     }
-    public function editTask(Request $request, $id){
-        $data = array();
-        $data['name'] = $request->name;
-        $data['price'] = $request->price;
-        $data['description'] = $request->description;
-            Task::where('id', $id)->update($data);
-            return redirect('/');
-    }
+
 
 }
