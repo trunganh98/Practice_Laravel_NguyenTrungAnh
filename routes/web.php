@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 //view
 Route::get('/','TaskController@listTask');
-
+Route::get('listTask','TaskController@listTask');
 Route::post('add_task','TaskController@addTask');
 
 Route::get('delete_task/{id}','TaskController@deleteTask');

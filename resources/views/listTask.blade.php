@@ -21,7 +21,7 @@
                 @if(count($tasks) > 0)
                     <h2>Current task</h2>
 
-                    <table>
+                    <table class="table">
                         @foreach($tasks as $p)
                         <tr>
                             <td>
@@ -31,7 +31,7 @@
                                 {{$p->price}}
                             </td>
                             <td>
-                                {{$p->desciption}}
+                                {{$p->description}}
                             </td>
                             <td>
                                 <a href="{{URL::to('edit_task/'.$p->id)}}">

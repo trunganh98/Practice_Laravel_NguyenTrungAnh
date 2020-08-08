@@ -22,11 +22,11 @@ class TaskController extends BaseController
         $task->price = $request->price;
         $task->description = $request->desc;
         $task->save();
-        return redirect('/');
+        return redirect('listTask');
     }
     public function listTask(){
         $tasks = Task::orderBy('id','desc')->get();
-        return view('welcome',['tasks'=>$tasks]);
+        return view('listTask',['tasks'=>$tasks]);
 
     }
     public function editTask($id){
@@ -45,13 +45,12 @@ class TaskController extends BaseController
     }
     public function deleteTask($id){
         Task::where('id', $id)->delete();
-        return redirect('/');
+        return redirect('listTask');
 
     }
     public function findTask(Request $request){
-        $result = Task::where('id',$request->value)->get();
+        $result = Task::where('id',$request->value)->orWhere('name',$request->value)->get();
         return view('result',['result'=>$result]);
-
     }
 
 
